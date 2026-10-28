@@ -1,0 +1,67 @@
+% Generic paper skeleton for a benchmark or empirical study. Replace every ‹placeholder›.
+% Claim IDs and notes may sit in comments while drafting; strip comments before the arXiv upload.
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{authblk}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{xurl}            % long paths and URLs wrap instead of overflowing
+\usepackage{amsmath}
+\usepackage[section]{placeins} % floats stay inside their section
+\usepackage{float}           % [H]: figures and tables sit where first discussed
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\definecolor{linkblue}{RGB}{0,0,120}
+\hypersetup{colorlinks=true, citecolor=linkblue, linkcolor=linkblue, urlcolor=linkblue,
+  pdftitle={‹Title›}, pdfauthor={‹Authors›}, pdfsubject={‹One-line subject›}, pdfkeywords={‹keywords›}}
+
+% One macro per long system name keeps naming consistent across sections.
+\newcommand{\refsys}{‹reference tool›}
+
+\title{‹Descriptive or question-style title: what was compared, and on what›}
+\author[1]{‹Author One›}
+\author[1]{‹Author Two›}
+\affil[1]{‹Affiliation›\\\texttt{‹email›}}
+\date{‹Month Year›}
+
+\lstset{basicstyle=\ttfamily\small, breaklines=true, columns=fullflexible, frame=single,
+  rulecolor=\color{black!20}, backgroundcolor=\color{black!3}, showstringspaces=false, tabsize=2}
+
+\begin{document}
+\maketitle
+
+% Order the section inputs as the narrative guideline's paper structure says (e.g. related work may come second).
+\input{sections/00-abstract}
+\input{sections/01-introduction}
+\input{sections/02-method}
+\input{sections/03-finding-1}
+\input{sections/04-finding-2}
+\input{sections/05-finding-3}
+\input{sections/06-robustness}
+\input{sections/07-threats}
+\input{sections/08-related-work}
+\input{sections/09-future-work}
+\input{sections/10-conclusion}
+\input{sections/11-availability}
+\input{sections/12-statements}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\input{sections/A-corpus}
+\input{sections/B-configurations}
+\input{sections/C-supplementary}
+
+\end{document}

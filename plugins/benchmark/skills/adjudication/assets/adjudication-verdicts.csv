@@ -1,0 +1,2 @@
+cluster_id,review_view,unit,category,systems_reporting,first_pass_verdict,sceptic_verdict,final_verdict,final_novelty,reference_tool_reported,boundary,reproduced_live,reproducer_path,human_notes,decided_by,decided_on
+‹id›,‹reference-set-gaps|new-vs-reference-tool›,‹unit›,‹category›,‹n systems from m families›,‹real|borderline|noise›,‹real|borderline|noise›,‹real|borderline|noise›,‹yes|partial|no›,‹no|yes-same-label|yes-different-label›,‹first-party|third-party|first-party-misuse›,‹yes|no|constrained›,‹path›,‹free text›,‹name›,‹YYYY-MM-DD›

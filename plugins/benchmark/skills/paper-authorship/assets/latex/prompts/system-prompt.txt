@@ -1,0 +1,1 @@
+<The benchmark's own system prompt, verbatim. If the ledger records its hash, this file must hash to it; mind the trailing newline. Keep it plain ASCII or set listings to handle UTF-8.>

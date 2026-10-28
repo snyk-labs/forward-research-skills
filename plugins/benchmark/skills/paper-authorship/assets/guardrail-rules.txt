@@ -1,0 +1,59 @@
+# Guardrail rules for a benchmark paper. Copy to paper/guardrail-rules.txt, then:
+#   1. add one forbid rule per item in the narrative guideline's "claims never to make" list;
+#   2. add one require rule per item in the guideline's "Required disclosures" list (the guideline is the single source;
+#      the require rules below are the defaults most papers need, and the commented block lists the design-dependent ones);
+#   3. uncomment the design-dependent and task-dependent rules that apply, delete the rest.
+# Format: severity | kind | regex | reason   (fields separated by ' | ' with spaces; a bare '|' in a regex is alternation)
+# Text is matched with comments removed and each paragraph joined onto one line. Tighten any pattern that produces
+# false positives on the current draft; keep the reason readable.
+
+# --- statistics
+block  | forbid      | \bstatistically (in)?significant\b|\bsignificantly\b|\bsignificant (difference|gain|improvement|effect|result)s?\b | descriptive statistics only; never claim significance
+review | forbid      | \bsignificant\b | in a paper that reports p-values descriptively, "significant" reads as a statistical claim; say "large" or give the numbers
+block  | forbid      | \bstatistically indistinguishable\b|\bno (real|meaningful) difference\b | "not separated" is not "equal"; give the counts
+block  | forbid      | \bwe prove\b|\bproves that\b|\bconclusively\b | empirical results support, they do not prove
+
+# --- design honesty
+block  | forbid      | \bpre-?registered\b|\bregistered (rule|metric|setting|policy)\b | say "fixed before analysis" or "primary" unless a public pre-registration exists
+review | forbid      | \b(caused|causes|because of|due to|led to|drives|driven by)\b | causal wording needs a control that isolates the factor; otherwise "is consistent with"
+
+# --- marketing language and slogans
+block  | forbid      | \b(revolutionary|game[- ]chang\w*|best[- ]in[- ]class|industry[- ]leading|unparalleled|cutting[- ]edge|world[- ]class|next[- ]gen\w*|seamless\w*|supercharg\w*|blazing(ly)?|unmatched (accuracy|performance|coverage|speed|quality))\b | marketing language
+block  | forbid      | \b(clearly|vastly|dramatically|massively) (better|superior|outperform\w*)\b | promotional comparative
+nit    | forbid      | \b(delve|tapestry|landscape of|pivotal|underscore[sd]?|leverag\w+|holistic|synerg\w+)\b | stock filler; say it plainly
+
+# --- superlatives: correct sometimes, wrong often; verify each against every set it could cover
+review | superlative | \b(only|every|all|none|never|always|first|best|worst|unique(ly)?|sole(ly)?)\b | verify against the registry and every subset/supplementary run
+review | superlative | \btop[- ]?(two|three|four|five|\d+)\b | verify membership under every set and rule the sentence could cover
+
+# --- placeholders (also run on prompts/*.txt and references.bib by passing them to --tex)
+block  | placeholder | \[(date|k|n|version|tbd|todo)\]|\bTODO\b|\bTBD\b|\bFIXME\b|\bXXX\b|\?\?|‹[^›]*› | unfilled placeholder
+
+# --- required disclosures: defaults (each must match at least once outside headings; adapt the patterns to the paper's wording)
+block  | require     | conflicts? of interest|competing interests?|(are|is|were|was) employed by|employees? of | authorship and conflict-of-interest disclosure
+block  | require     | reference set .{0,80}(created|curated|seeded|construct|built)|provenance of | provenance of the reference set
+block  | require     | (data|code)( and (code|data))? (are|is) (publicly )?(available|released)|released under|available at | data and code availability statement
+block  | require     | licen[cs]e[ds]? | licence terms of the released code and data
+
+# --- even-handedness: every sentence about the authors' own product gets a second look (replace the name)
+# review | forbid    | \b‹own product name›\b | sentence about the authors' product: same verb, caveat and placement as comparable results for other systems?
+
+# --- required disclosures: design-dependent (uncomment the ones the guideline lists)
+# block  | require   | (one|single|a single) run per|ran once|were run once | single-run caveat (only when each cell was run once)
+# block  | require   | independen\w+ .{0,80}(reference set|curat|annotat) | independence of curation from the evaluated systems
+# block  | require   | confound\w* | confounded comparisons named, with the design limit
+# block  | require   | (defect|error|mislabel\w*) .{0,60}reference set|reference set .{0,60}(defect|error|mislabel) | known reference-set defects and their measured impact
+# block  | require   | version\w* .{0,60}(not recorded|unrecorded|unknown)|did not record .{0,40}version | version-recording gaps
+# block  | require   | supplementary .{0,80}(separate|not (included|merged|pooled))|reported (separately|beside) | supplementary runs labelled and kept out of the headline
+# block  | require   | adjudicat\w+ .{0,80}(scope|limited to|only) | adjudication scope (what was and was not reviewed)
+# block  | require   | (generative )?AI (assistance|tools?|models?) .{0,80}(draft|writ|assist|used)|LLM-assisted | AI-assistance disclosure (most venues require one)
+# review | require   | shared .{0,60}before publication|disclosed .{0,60}before publication|post-disclosure | post-disclosure note (only if results were shared with a system owner before publication)
+# block  | require   | (reviewed|saw|received) .{0,80}before publication|pre-publication (review|access) | pre-publication access statement (who reviewed or received findings, and on what terms)
+
+# --- task-dependent: detection-style studies where an unmatched output is not proven wrong (uncomment if the guideline says so)
+# block  | forbid    | \bhallucinat\w*\b|\bfalse[- ]positives?\b|\bfalse[- ]positive rate\b | unmatched findings are "outside the reference set" until adjudicated
+# block  | forbid    | \bmiss(ed)? rate\b | the reference set bounds what can be "missed"; say "not matched"
+# review | forbid    | \brepeatab\w*|\bdeterministic(ally)?\b|\bconsistent(ly)? across runs\b | only where repeated runs exist for that system
+
+# --- spelling variant (example for US English; invert for UK English)
+nit    | forbid      | \b(analys(e|ed|ing)|behaviour\w*|labell(ed|ing)|unlabelled|licence[sd]?|favour\w*|colour\w*|modell(ed|ing)|organis\w+|recognis\w+|standardis\w+|artefact\w*|sceptical)\b | spelling variant (US English paper)

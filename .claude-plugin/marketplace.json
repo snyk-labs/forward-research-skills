@@ -1,0 +1,15 @@
+{
+  "name": "forward-research-skills",
+  "description": "Skills for objective, reproducible empirical research: benchmark and evaluation studies from raw runs to a published paper.",
+  "owner": {
+    "name": "Snyk Labs",
+    "url": "https://github.com/snyk-labs"
+  },
+  "plugins": [
+    {
+      "name": "benchmark",
+      "source": "./plugins/benchmark",
+      "description": "Ten skills for a benchmark study end to end, objectivity first: evidence packet, narrative guideline, literature review, control runs, adjudication, expert review kit, release readiness, paper authorship and public assets."
+    }
+  ]
+}

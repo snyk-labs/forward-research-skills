@@ -1,0 +1,45 @@
+% Draft FIRST. Defines every term the results use.
+\section{Benchmark and method}
+\label{sec:method}
+
+\subsection{Corpus}
+\label{sec:corpus}
+‹Where the ‹units› came from, how many, under which terms; who wrote any of them.›
+
+\subsection{Reference set}
+\label{sec:reference}
+‹How the ‹reference set› was built: origins, who curated, which tools or models helped and how, what was verified. State the counting basis.›
+
+\subsection{Systems and configurations}
+\label{sec:configs}
+‹Each configuration as the full combination that ran (harness, version, model, settings). Table~\ref{tab:configs}. How each version is known.›
+
+\begin{table}[H]
+\centering
+\small
+\caption{The configurations. Mark how each version is known (recorded per run, observed at preflight, reported by the operator, inferred).}
+\label{tab:configs}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.2cm}}
+\toprule
+System and version & Model & Settings & Primary metric \\
+\midrule
+‹\refsys{} ‹version››& ‹model, or none› & ‹…› & ‹metric› \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Protocol}
+\label{sec:protocol}
+‹Blind? Isolated? Runs per cell; final attempt scored? Run dates.›
+
+\subsection{Scoring}
+\label{sec:scoring}
+‹The matching rule in plain words; tolerance; one-to-one or many-to-one; alternative metrics for systems scored differently.›
+
+\subsection{Metrics and statistics}
+\label{sec:metrics}
+‹Primary metric (macro or micro) with k/N beside every rate. One plain sentence per statistical method; what an interval represents; p-values only where the narrative relies on them, descriptive.›
+
+\subsection{Supplementary runs}
+\label{sec:supp-method}
+‹What was run later, why, what is identical and what differs, the outcome rules fixed before analysis stated in full, and that these runs are never merged into the main results.›

@@ -1,0 +1,12 @@
+# LaTeX build artefacts: never commit. Keep main.bbl for the arXiv bundle.
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.blg
+*.toc
+*.synctex.gz
+*.tmp
+tmp*.tmp
+arxiv-bundle/

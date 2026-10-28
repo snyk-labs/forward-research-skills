@@ -1,0 +1,22 @@
+{
+  "name": "benchmark",
+  "version": "0.5.0",
+  "description": "Skills for running empirical benchmark and evaluation studies end to end, objectivity first: evidence packet, narrative guideline, literature review, supplementary runs, adjudication, internal review kit, release readiness, paper authorship, and public social assets. Generic to any study that compares systems on a curated reference set.",
+  "author": {
+    "name": "Liran Tal"
+  },
+  "homepage": "https://github.com/snyk-labs/forward-research-skills",
+  "repository": "https://github.com/snyk-labs/forward-research-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "benchmark",
+    "empirical-research",
+    "evaluation",
+    "evidence-ledger",
+    "latex",
+    "literature-review",
+    "objectivity",
+    "paper-writing",
+    "reproducibility"
+  ]
+}
