@@ -1,6 +1,16 @@
-# ‹Benchmark name and version›: public chart and highlight assets
+# ‹Benchmark name and version›: launch material
 
-Working doc for turning the paper's findings into one-point assets for ‹site› and social channels. The paper's figures are for readers who check the method; these are for people scrolling past.
+Working doc for turning the paper's findings into one launch page, one-point cards and posts for ‹site› and social channels. The paper's figures are for readers who check the method; these are for people scrolling past.
+
+## Brief
+
+- **Publisher and disclosure line:** "‹Study› is research by ‹publisher›‹, which makes ‹system›, one of the evaluated systems›. All code and data are public."
+- **Public sources:** paper ‹link, or placeholder until live› · site ‹domain› · repository ‹link›.
+- **Audiences:** ‹for example practitioners, decision makers, researchers, builders of the evaluated systems›.
+- **Channels and counts:** ‹LinkedIn n›, ‹X n› ‹, others›.
+- **Output:** ‹a privately published page shared by link, or a static HTML file› plus the image pack.
+- **Visual system:** ‹tokens and fonts, applied within the figure rules; each system keeps its colour from the paper›.
+- **People who may be quoted:** ‹name, verified role or "no role"›. Each quote needs that person's approval.
 
 ## Release gate
 
@@ -19,7 +29,7 @@ Nothing goes out before the paper is public at ‹link›. Every number comes fr
 - **Footer and caveat:** "‹study name · link›" plus the asset's caveat line.
 - **Names:** short configuration names on images, full names in alt text.
 
-## Assets, in priority order
+## Findings, in the paper's order of weight
 
 ### ‹n›. ‹Short title›
 
@@ -43,6 +53,18 @@ Nothing goes out before the paper is public at ‹link›. Every number comes fr
 ## Site (plan only)
 
 ‹Interactive versions planned, and what they need.›
+
+## Likely questions
+
+| Question a reader will ask | Factual answer, with the paper's numbers | Where the paper covers it | Claims |
+|---|---|---|---|
+
+Include the questions about limitations, about each system's weak results (the authors' product included), and about the authors' tie to any evaluated system.
+
+## Copy review log
+
+| ID | Severity | Item | Issue | Decision (act / decline / ask) | Fix | Rebuilt |
+|---|---|---|---|---|---|---|
 
 ## Decisions
 

@@ -39,7 +39,7 @@ Each stage protects the next one from a specific failure: analysing before the s
 | 5 | Internal expert review (optional) | `benchmark:review-kit` | Guideline, ledger, figures | kit PDF, feedback triage, draft messages | Human sends messages and accepts or declines each comment |
 | 6 | Release readiness | `benchmark:release-readiness` | Guideline, provenance facts, repo | provenance and independence statement, licence audit, data release, checklist | Human confirms root licence, authors, disclosures, publication |
 | 7 | Paper | `benchmark:paper-authorship` | Guideline, evidence packet (registry, ledger, tables, chart spec, limitations, TODO), release text from stage 6 | LaTeX paper, figures and manifest, claim inventory, guardrail rules, review-round log, pre-publication package | Figure set; each section; title, authors, affiliations and conflict-of-interest wording; placeholder values; statements about third-party products; submission |
-| 8 | Public social assets | `benchmark:social-packet` (scaffold) | Public paper and repo only, the paper's figure script, guideline guardrails | working doc of asset specs, image pack with copy lines and alt text, copy bank | Asset list, each rendered asset and its copy, every hand-off; release gate after publication |
+| 8 | Public launch material | `benchmark:social-packet` | Public paper and repo only, the claims registry, the paper's figure script, guideline guardrails | working doc, cards, one launch page built by a checked builder (findings, terms, posts, likely questions), image pack | Findings list, cards, finished page, every quote by the person quoted, every hand-off; release gate after publication |
 
 Figures: `empirical-analysis` only specifies charts; draft figures for reviewers are rendered by a script in `benchmark:review-kit`, and final paper figures belong to `paper-authorship`.
 
@@ -51,7 +51,7 @@ Stage 2b has three passes: a prior-art guide written before the results (during 
 - Stage 2 to everything else: the guideline. When the guideline and any older document disagree, the guideline wins. Mark superseded documents historical.
 - Stages 3 and 4 to 2: new claim IDs from the pipeline, never hand-typed numbers.
 - Stage 2b to 1, 2 and 7: the prior-art guide (novelty scores for candidate theses), claims the literature constrains (guideline), approved method notes (pipeline claims), and the accepted citations, verification log and "to our knowledge" statements (paper).
-- Stage 7 to 8: the public paper, its figure script and tables, the claim inventory, the guideline's guardrails.
+- Stage 7 to 8: the public paper, its claims registry, its figure script and tables, the claim inventory, the guideline's guardrails.
 - Stage 6 to 7: the provenance and independence statement, the licence audit result, the data and code availability text.
 - Stage 7 back to 6: the pre-publication package. Release readiness runs its pre-submission checklist as the final gate on the paper, confirming the package's checks passed rather than repeating them.
 

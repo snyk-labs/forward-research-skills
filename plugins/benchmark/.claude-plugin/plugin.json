@@ -1,7 +1,7 @@
 {
   "name": "benchmark",
-  "version": "0.6.0",
-  "description": "Skills for running empirical benchmark and evaluation studies end to end, objectivity first: evidence packet, narrative guideline, literature review, supplementary runs, adjudication, internal review kit, release readiness, paper authorship, and public social assets. Generic to any study that compares systems on a curated reference set.",
+  "version": "0.7.0",
+  "description": "Skills for running empirical benchmark and evaluation studies end to end, objectivity first: evidence packet, narrative guideline, literature review, supplementary runs, adjudication, internal review kit, release readiness, paper authorship, and public launch material. Generic to any study that compares systems on a curated reference set.",
   "author": {
     "name": "Liran Tal"
   },

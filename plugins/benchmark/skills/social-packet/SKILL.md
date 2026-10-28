@@ -1,42 +1,60 @@
 ---
 name: social-packet
-description: "Turn a published benchmark paper's findings into public chart and highlight assets for a website and social channels: a release gate, short-form copy rules derived from the paper's guardrails, one spec per asset (takeaway, chart, numbers, paper figure and claim, caveat line), an image pack rendered from the paper's own figure script, and a sourced copy bank. Use when the user says \"social assets\", \"charts for social\", \"launch posts for the benchmark\", \"highlights from the paper\", \"image pack for marketing\", \"what can we post\", \"turn this reply into a chart\", or \"site update with the results\". Only after the paper is public. Not for the paper's own figures (paper-authorship) or for a personal-voice post on its own (use the user's voice skill, with these rules)."
+description: "Turn a published benchmark paper's findings into public launch material: a working doc, one shareable launch page (what the study is, plain-language terms, findings with evidence cards, draft quotes, LinkedIn and X posts, say / don't-say guardrails and answers to likely questions), and an image pack rendered from the paper's own figure script. A builder refuses to write the page if a number doesn't trace to the claims registry, a card is missing, an X post runs over, a quote isn't marked as a draft or the disclosure is missing. Use when the user says \"social assets\", \"launch kit\", \"launch page\", \"charts for social\", \"launch posts for the benchmark\", \"LinkedIn and X posts for the paper\", \"highlights from the paper\", \"image pack for marketing\", \"messaging for the launch\", \"what can we post\", \"turn this reply into a chart\", or \"site update with the results\". Only after the paper is public, or with the release gate held. Not for the paper's own figures (paper-authorship) or a single post in a personal voice (the user's voice skill, with these rules)."
 ---
 
-# Social packet: public assets derived from the published paper
+# Social packet: public launch material from the published paper
 
-> Scaffold (v0). Built from one release's plan before that release ran end to end; refine it after the first full use.
+**Inputs** (ask for anything missing):
 
-**Inputs:** the public paper and repository (the only sources of numbers), the paper's figure script and tables, the narrative guideline (its "claims never to make" and wording guardrails), the claim inventory, the project's brand or visual system, and any audience questions worth answering (replies, comments). **Outputs:** one working doc from `assets/social-assets-template.md` (release gate, copy rules, production notes, asset specs, copy bank, decisions), then an image pack: one file per asset, each paired with its copy line and alt text. **Human checkpoints:** the human approves the asset list, each rendered asset and its copy, and every hand-off to another team; owners of evaluated systems get the same sign-off chance on assets about their system that they got for the paper. Nothing is posted by this skill. **Hand-off:** the human (or a marketing team) for distribution; a personal-voice skill, if the user has one, for posts in their own voice, with these rules still applying.
+- the public paper and repository (the only sources of numbers), the claims registry (`tables/claims.csv`), the claim inventory, the paper's figure script and tables;
+- the narrative guideline's "claims never to make" and wording guardrails;
+- the project's visual system and channels, and any audience questions worth answering (replies, comments).
 
-Why a separate step: paper figures are built for readers who check the method; social assets are for people scrolling past, so each makes one point in plain words. Short form is where the paper's guardrails are easiest to break, and where a single cropped chart can misrepresent a careful result.
+**Outputs** (in the project's `social/` folder):
 
-## 1. Release gate
+- the working doc, from `assets/social-assets-template.md`: release gate, audiences, channels, disclosure line, people who may be quoted, the findings list with its balance check, copy rules, the copy-review log, decisions;
+- `cards/` with `manifest.csv`, from a card script started from `assets/card-script-skeleton.py`;
+- `page_content.py`, from `assets/page-content-template.py`: all copy as data, every item tagged with its claim IDs;
+- `page.html`, built by `scripts/build_page.py` from `assets/page-template.html`.
 
-Nothing goes out before the paper is public. After that, every number on an asset comes from the paper or the public repository, and each asset spec names the paper figure and the claim it comes from, so the check is mechanical. Statements about any evaluated system go through the same owner sign-off as the paper, offered to every owner on the same terms.
+**Human checkpoints:** the working doc's findings list (before any copy); the rendered cards; the finished page; every hand-off to another team. Every quote needs approval from the person it is attributed to. Owners of evaluated systems get the same sign-off chance on material about their system that they had for the paper, offered to every owner on the same terms. Nothing is posted, scheduled, sent or shared by this skill.
 
-## 2. Copy rules
+**Hand-off:** the human, and through them whoever distributes it; a personal-voice skill, if the user has one, for posts in their own voice, with these rules still applying.
 
-Restate the guideline's guardrails for short form in the working doc (`references/short-form-rules.md` has the generic set): lead with what the study found, not "who won"; name the full configuration; keep metric families apart; keep the paper's wording ceiling; carry the one caveat that keeps each asset honest.
+Why a separate step: paper figures are built for readers who check the method; launch material is for people scrolling past, so each piece makes one point in plain words. Short form is where the paper's guardrails are easiest to break, and where one cropped chart or one favourable basis can misrepresent a careful result.
 
-## 3. Choose the assets
+## Objectivity
 
-- Start from the paper's findings in its own order of weight, then add assets that answer real audience questions.
-- When a question asks for a framing that would break a rule (for example a metric that labels unmatched outputs as false), keep the idea and change the framing; record that in the asset's "Origin" line.
-- **Objectivity:** the set as a whole must represent the paper, including findings unfavourable to the authors' product. An asset shows every system in its comparison, not a favourable subset. Emphasis (highlighting, ordering) follows the paper's stated rule. A competitor's result gets the same full name, wording and caveat the authors' product would. Leaving out an asset is fine for clarity; leaving it out because of where it points is not.
-- Before rendering, any number an asset needs that the paper doesn't print (a difference, a subset count) gets a pipeline claim first, never a hand subtraction.
+The plugin's rules (`benchmark:workflow`, "Objectivity comes first") hold here unchanged; launch material is where they are most tested.
 
-## 4. Produce
+- **The set represents the paper.** Findings follow the paper's order of weight, including the ones unfavourable to the authors' product. Leaving a finding out for clarity is fine; leaving it out because of where it points is not.
+- **Every system the same.** Each card shows every system in its comparison, in the paper's order and colours; no system gets a highlight, bolder label or annotation the others don't. Comparable results get the same verbs and caveats.
+- **The paper's ceiling and basis.** No number is rounded or re-based; a count that depends on which systems, metric or runs it covers names that basis.
+- **Disclosure.** The page and at least one post per channel say who ran the study and any tie to an evaluated system.
+- **Likely questions get factual answers.** Questions a reader will ask (about limitations, a system's weak result, the authors' tie to a system) get answers that state the facts with the paper's numbers and point to where the paper covers them.
 
-- Render from the paper's figure script with a social layout pass (sizes per channel), never by editing images. Numbers stay tied to the tables.
-- Apply the brand or visual system through the project's brand skill, if one exists, inside the figure rules (readability, accessibility, neutral treatment).
-- Every asset carries a footer (study name and link) and its caveat line. Use short configuration names on the image and the full names in the alt text.
-- Look at every rendered asset at its real size before handing it over.
+Each finding in the content file declares which systems it reflects well and badly on; the build prints the balance across the set so the human can check it against the paper.
 
-## 5. Copy bank and site
+## Order of work
 
-Keep one-line highlights in the working doc, each traceable to the paper. Interactive site versions are planned there too; building them is separate work.
+1. **Working doc** with the human: release gate, audiences, channels and counts, disclosure line, who may be quoted (verified roles only), visual system.
+2. **Findings list:** each with its message at the paper's ceiling, proof points with claim IDs, the basis behind every count, the caveat that keeps it true, the systems it reflects on, the audience, its card. Fill the balance check. **Checkpoint.**
+3. **Cards** (`references/card-production.md`): drawn from the paper's figure script and tables, never by editing images; render them all and look at each at its real size. **Checkpoint.**
+4. **Copy as data** in `page_content.py`: one-liner and context, a fact strip, plain-language terms (one term per concept, used everywhere), findings, quotes (drafts, only facts the paper states), posts per `references/channel-rules.md`, guardrails and likely questions. Any number the copy needs that the paper doesn't print gets a pipeline claim first.
+5. **Build** with the checks:
+
+   ```
+   python3 ‹skill›/scripts/build_page.py --content social/page_content.py --template social/page-template.html \
+       --claims analysis/tables/claims.csv --cards social/cards --out social/page.html [--standalone]
+   ```
+
+   It refuses to write the page unless every claim ID exists, every card exists, every number traces to its claims (or to the declared `STRUCTURAL` list, with a reason), every X post fits in 280 characters with the paper link, every quote says "draft", every finding declares its balance, and the disclosure is present. Use `--standalone` for a static HTML file; without it the output is a page body for a host that adds the document skeleton, such as a published Claude artifact.
+6. **Copy review** by a fresh reviewer (`references/copy-review.md`), then fixes and a rebuild; log the round in the working doc.
+7. **Publish privately or deliver the file,** persist everything in the project, and tell the human: the page is private until they share it, which quotes need approval, where the link placeholder is, and which counts depend on a basis. **Checkpoint.** Later changes go through `page_content.py` and a rebuild.
+
+Short-form wording rules are in `references/short-form-rules.md`; restate them in the working doc with the study's own names and metrics.
 
 ## Do not
 
-Do not post, schedule or send anything. Do not use numbers that are not in the public paper or repository. Do not turn adjudicated or supplementary results into headline claims the paper itself keeps separate.
+Do not post, schedule, send or share anything. Do not use a number that is not in the public paper or repository. Do not turn adjudicated or supplementary results into headline claims the paper itself keeps separate. Do not present a draft quote as approved.

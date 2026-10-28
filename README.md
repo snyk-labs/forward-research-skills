@@ -50,7 +50,7 @@ flowchart TD
     REL["6 · release-readiness<br/>provenance, independence,<br/>licences, data release"]:::core
     P["7 · paper-authorship<br/>figures first, section checkpoints,<br/>claim inventory, cross-review"]:::core
     G["6 · release-readiness<br/>final pre-submission gate"]:::gate
-    X["8 · social-packet<br/>public charts and copy<br/>from the published paper"]:::opt
+    X["8 · social-packet<br/>launch page, cards and posts<br/>from the published paper"]:::opt
 
     R -.-> A
     LIT0 --> A
@@ -86,7 +86,7 @@ Solid boxes are the main path; dashed boxes are optional stages that run when th
 | [`review-kit`](plugins/benchmark/skills/review-kit/SKILL.md) | An expert should check the findings before publication | A 25–30 minute review PDF built from the ledger, fairness checks for every system, act / decline / future-work triage, draft messages |
 | [`release-readiness`](plugins/benchmark/skills/release-readiness/SKILL.md) | Anything is about to become public | Provenance and independence statement, bias sensitivities, licence audit, data release, pre-submission checklist, post-disclosure protocol |
 | [`paper-authorship`](plugins/benchmark/skills/paper-authorship/SKILL.md) | The evidence and the guideline exist and the paper must be written | Paper brief, figures from one script, LaTeX skeleton, section checkpoints, a claim inventory checked against the ledger, guardrail lint, cross-review rounds, pre-publication package |
-| [`social-packet`](plugins/benchmark/skills/social-packet/SKILL.md) | The paper is public and needs one-point charts and copy | Release gate, short-form copy rules, asset specs with a balance check, rendering from the paper's own figure script. *Scaffold.* |
+| [`social-packet`](plugins/benchmark/skills/social-packet/SKILL.md) | The paper is public and needs launch material | One shareable launch page (terms, findings with evidence cards, draft quotes, LinkedIn and X posts, guardrails, answers to likely questions), an image pack from the paper's own figure script, a balance check across findings, and a builder that refuses to publish an untraced number |
 
 The skills draft; people decide. No skill sends a message, posts, publishes data, merges a branch or submits a paper. Each one stops and hands back to a human at the checkpoints it names.
 
@@ -102,6 +102,7 @@ The skills draft; people decide. No skill sends a message, posts, publishes data
 | `supplementary-runs/scripts/secret_scan.py` | Scans a release staging directory for credential-shaped strings |
 | `release-readiness/scripts/licence_inventory.py` | Lists licence files per unit and flags units without one |
 | `review-kit/scripts/build_review_kit.py` | Builds the review PDF from a JSON spec, filling every number from the ledger |
+| `social-packet/scripts/build_page.py` | Builds the launch page from a content file and refuses to write it unless every number traces to its claims, every card exists, every X post fits, every quote is marked as a draft and the disclosure is present; prints the balance across findings |
 
 ## Install
 

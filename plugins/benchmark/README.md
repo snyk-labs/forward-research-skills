@@ -1,4 +1,4 @@
-# benchmark (plugin, v0.6.0)
+# benchmark (plugin, v0.7.0)
 
 Part of [forward-research-skills](https://github.com/snyk-labs/forward-research-skills); installation and the full overview are in the repository README.
 
@@ -23,13 +23,13 @@ Reusable skills for empirical research that compares systems on a curated refere
 | `benchmark:release-readiness` | Before anything is public: provenance, independence, licences, data release, post-disclosure; and as the final gate after the paper | `paper-authorship`, then publication |
 | `benchmark:paper-authorship` | The guideline and evidence packet exist and the paper must be written: figures first, section-by-section checkpoints, claim inventory, cross-review rounds, guardrail lint, pre-publication package | `release-readiness` (final gate) |
 | `benchmark:literature-review` | Prior art before the results, a targeted pass after the thesis, verification of every citation, a proposal the human approves, and a novelty re-check at submission | `empirical-analysis` (novelty), `narrative-guideline`, `paper-authorship` |
-| `benchmark:social-packet` | The paper is public and its findings need one-point chart assets and copy for a site and social channels | the human, for distribution |
+| `benchmark:social-packet` | The paper is public and its findings need launch material: one shareable page, cards, LinkedIn and X posts, guardrails and answers to likely questions, every number checked against the claims registry | the human, for distribution |
 
-`benchmark:social-packet` is a scaffold (v0): built from one release plan before that release ran end to end, to be refined after first use.
+`benchmark:social-packet`'s page builder and templates are tested on synthetic data; the skill has not yet been run end to end on a real release.
 
 ## Layout
 
-Each skill has `SKILL.md` (instructions), `references/` (detail loaded on demand), `assets/` (templates to copy), and `scripts/` where code helps. Six skills ship scripts. `empirical-analysis` ships the pipeline skeleton: a claims registry, evidence-ledger generator with a `--check` mode, a stats helper (Wilson, cluster bootstrap, exact and mid-p McNemar, Kendall tau), and a numbered-step `run_all.py`. `supplementary-runs` ships a secret scan, `review-kit` a PDF builder (needs `reportlab`; `pdftoppm` optional for page images), `release-readiness` a licence inventory, `literature-review` an identifier extractor (exclusion lists for search passes, bibliography-versus-accepted check), and `paper-authorship` a claim-inventory checker (one claim-ID pattern shared with the ledger; checks values as stated and a registry stamp) and a guardrail lint, plus a figure-script skeleton (needs matplotlib) and a LaTeX skeleton. The skeleton was dry-run on a synthetic dataset (3 systems x 2 units x 12 items with one deliberate confound).
+Each skill has `SKILL.md` (instructions), `references/` (detail loaded on demand), `assets/` (templates to copy), and `scripts/` where code helps. Seven skills ship scripts. `empirical-analysis` ships the pipeline skeleton: a claims registry, evidence-ledger generator with a `--check` mode, a stats helper (Wilson, cluster bootstrap, exact and mid-p McNemar, Kendall tau), and a numbered-step `run_all.py`. `supplementary-runs` ships a secret scan, `review-kit` a PDF builder (needs `reportlab`; `pdftoppm` optional for page images), `release-readiness` a licence inventory, `literature-review` an identifier extractor (exclusion lists for search passes, bibliography-versus-accepted check), and `paper-authorship` a claim-inventory checker (one claim-ID pattern shared with the ledger; checks values as stated and a registry stamp) and a guardrail lint, plus a figure-script skeleton (needs matplotlib) and a LaTeX skeleton. `social-packet` ships a page builder that refuses to write the launch page unless every claim ID, card and number traces, every X post fits and the disclosure is present, plus a page template and a social-card skeleton. The skeleton was dry-run on a synthetic dataset (3 systems x 2 units x 12 items with one deliberate confound).
 
 ## Conventions the skills assume
 
