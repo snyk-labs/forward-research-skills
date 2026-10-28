@@ -74,6 +74,7 @@ Rules for paper figures, each with a short reason and a generic example. Apply t
 
 - The paper gets vector PDFs on a white canvas, with no explanatory notes inside the image (the caption does that job).
 - Web and social variants come from the same code, with a theme switch (light and dark), notes rendered inside the image (they travel without a caption), and a footer with the benchmark name. Social sizes are a separate layout pass, never a resized paper figure.
+- **Review the in-image notes too.** They never appear in the paper PDF, so a paper review round does not see them: give the reviewer the web PNGs and check each note against the registry and the final paper wording (counts, timing, terms). Stale notes are the usual failure: an old timing, an internal label, or a claim the paper has since corrected.
 
 ## 9. The visual check
 

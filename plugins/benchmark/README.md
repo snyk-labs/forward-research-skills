@@ -1,4 +1,4 @@
-# benchmark (plugin, v0.5.0)
+# benchmark (plugin, v0.6.0)
 
 Part of [forward-research-skills](https://github.com/snyk-labs/forward-research-skills); installation and the full overview are in the repository README.
 

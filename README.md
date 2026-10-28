@@ -97,6 +97,7 @@ The skills draft; people decide. No skill sends a message, posts, publishes data
 | `empirical-analysis/scripts/` | Pipeline skeleton: claims registry, evidence-ledger generator with `--check`, statistics helpers (Wilson, cluster bootstrap, exact and mid-p McNemar, Kendall tau), numbered steps, `run_all.py --verify-determinism`, and a synthetic dataset for a dry run |
 | `paper-authorship/scripts/check_claims.py` | Checks the paper's claim inventory against the ledger: unknown or wildcard IDs, IDs leaked into the text, values as printed versus the registry, a registry that changed under the paper |
 | `paper-authorship/scripts/guardrail_lint.py` | Lints LaTeX and Markdown against rules built from the guideline: forbidden wording, superlatives to verify, placeholders, missing disclosures |
+| `paper-authorship/scripts/make_arxiv_bundle.py` | Builds the arXiv source bundle: comments stripped, only the figures and inputs actually used, `main.bbl` kept, compiled clean from a fresh directory, zipped |
 | `literature-review/scripts/extract_ids.py` | Lists arXiv IDs and DOIs, for search exclusion lists and a bibliography-versus-accepted check |
 | `supplementary-runs/scripts/secret_scan.py` | Scans a release staging directory for credential-shaped strings |
 | `release-readiness/scripts/licence_inventory.py` | Lists licence files per unit and flags units without one |
@@ -192,13 +193,11 @@ These skills were distilled from Snyk's own benchmark research. Snyk builds secu
 
 Published benchmark research from Snyk:
 
-**Snyk VulnBench** · [vulnbench.com](https://vulnbench.com/)
-How reliably AI systems find vulnerabilities, with the evidence behind every conclusion.
+**Snyk VulnBench** · [vulnbench.com](https://vulnbench.com/) How reliably AI systems find vulnerabilities, with the evidence behind every conclusion.
 - *Snyk VulnBench JS 1.0: Can LLMs Find the Same Bugs Twice?* Liran Tal, Johannes Kloos, Arsenii Rudich, Stephen Thoemmes, Manoj Nair. [arXiv:2606.15762](https://arxiv.org/abs/2606.15762) (2026).
 - Code and data: [snyk-labs/snyk-vulnbench](https://github.com/snyk-labs/snyk-vulnbench) (benchmark harness), [snyk-labs/snyk-vulnbench-js-1.0](https://github.com/snyk-labs/snyk-vulnbench-js-1.0).
 
-**Snyk VulnBump** · [vulnbump.com](https://www.vulnbump.com/)
-Whether an AI agent can upgrade a vulnerable dependency without breaking the project.
+**Snyk VulnBump** · [vulnbump.com](https://www.vulnbump.com/) Whether an AI agent can upgrade a vulnerable dependency without breaking the project.
 - *VulnBump: A Benchmark for Fixing Vulnerable Dependencies in Real Projects While Keeping the Build and Tests Green.* Gabija Pasiunaite, Ryan McMorrow, Brian Clark, Liran Tal, Luke Tu. [arXiv:2610.17374](https://arxiv.org/abs/2610.17374) (2026).
 - Code: [snyk-labs/snyk-vulnbump](https://github.com/snyk-labs/snyk-vulnbump).
 

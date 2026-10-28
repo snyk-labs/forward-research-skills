@@ -14,13 +14,16 @@ The paper does not go out with an open row.
 - [ ] Every URL resolves from a logged-out browser and points at a default-branch, merged or tagged location (not a working branch).
 - [ ] Every arXiv ID and DOI matches the title and authors in `references.bib`; preprint versions re-checked on ‹date›.
 - [ ] Every statement about a cited work matches its abstract (inventory "Citations" table).
-- [ ] "To our knowledge" statements re-searched on ‹date›; narrowed where needed.
+- [ ] "To our knowledge" statements re-searched on ‹date› (checklist walk) and again on submission day ‹date›; concurrent work cited, claims narrowed where needed.
 - [ ] Repository paths named in the paper exist on the default branch.
 
 ## 3. Statements
 
 - [ ] Conflict of interest: each author's employer and its relationship to every evaluated system; funding.
 - [ ] Pre-publication access: which system owners were offered and took a review or received findings, when, on what terms; the same offer went to every evaluated system's owner, or the asymmetry is stated.
+- [ ] Who performed each review or adjudication pass (people or AI agents, which), and who made the final call.
+- [ ] Conflict of interest also stated in one sentence in the introduction.
+- [ ] Any threshold said to be fixed before analysis: what had already been seen at that point.
 - [ ] Author contributions.
 - [ ] Use of AI assistance: which tools, for what (analysis code, drafting, review rounds), and that the authors checked every statement and number.
 - [ ] Acknowledgements, with permission from the people named.
@@ -47,15 +50,22 @@ The paper does not go out with an open row.
 - [ ] Even-handedness: every sentence about the authors' product read beside the comparable sentence about another system (same verb, caveat, placement); results unfavourable to the authors' product are in the main text; figure order follows the stated rule.
 - [ ] Figures regenerated from the final registry; manifest current; alt text written.
 
-## 7. Venue
+## 7. Post-disclosure (only if findings were shared with a system owner)
+
+- [ ] Re-scan run as a separate labelled execution and archive, published on a branch and merged before the paper cites it (`references/post-disclosure-rescan.md`).
+- [ ] Archive verified and re-scored against the frozen reference set; per-item detection judged with the paper's rule; claims registered.
+- [ ] Owner's facts (fixes shipped, by when) recorded as author statements with a date.
+- [ ] Paragraph says what changed and that the main results stay as run.
+
+## 8. Venue
 
 - [ ] Venue rules checked: page limit, template, anonymization, preprint policy, artifact or data requirements.
 - [ ] Double-blind: anonymized build (authors, affiliations, acknowledgements and conflict-of-interest declaration held back for camera-ready; repository links to an anonymized mirror; self-citations in the third person). The camera-ready version restores the held-back text unchanged.
 
-## 8. arXiv bundle
+## 9. arXiv bundle
 
-- [ ] Copy the paper to a clean `arxiv-bundle/` directory.
-- [ ] Strip LaTeX comments (for example `arxiv_latex_cleaner`), then `guardrail_lint.py --tex arxiv-bundle/ --fail-on-comments` passes.
+- [ ] `scripts/make_arxiv_bundle.py --paper paper/` (comments stripped, used figures only, clean compile, zip), then `guardrail_lint.py --tex ‹unpacked copy› --fail-on-comments` passes.
 - [ ] Include `main.bbl`, every figure actually used, `prompts/`; exclude build files, unused figures, scratch and temporary files.
 - [ ] Compile the bundle from scratch; zero undefined references; read the PDF once more.
-- [ ] Metadata: title, authors, abstract (plain text, within the length limit), categories, licence, comments field.
+- [ ] Metadata: title, authors, abstract (plain text, within the form limit: 1,920 characters on arXiv; write a shorter form version with the same numbers if needed), categories, licence, comments field.
+- [ ] On upload, keep `main.bbl` even if the file manager suggests deleting it; check the compiled preview shows the references and no [?].

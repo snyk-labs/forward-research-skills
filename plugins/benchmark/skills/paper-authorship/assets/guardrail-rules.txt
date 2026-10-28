@@ -49,6 +49,8 @@ block  | require     | licen[cs]e[ds]? | licence terms of the released code and 
 # block  | require   | (generative )?AI (assistance|tools?|models?) .{0,80}(draft|writ|assist|used)|LLM-assisted | AI-assistance disclosure (most venues require one)
 # review | require   | shared .{0,60}before publication|disclosed .{0,60}before publication|post-disclosure | post-disclosure note (only if results were shared with a system owner before publication)
 # block  | require   | (reviewed|saw|received) .{0,80}before publication|pre-publication (review|access) | pre-publication access statement (who reviewed or received findings, and on what terms)
+# block  | require   | (AI agents?|language models?|human (reviewers?|annotators?)|by the authors) .{0,80}(pass|review|adjudicat|annotat|label)|(pass|review|adjudicat\w*) .{0,80}(AI agents?|by the authors) | who performed each review or adjudication pass (people or AI agents) and who made the final call
+# review | require   | (fixed|written|set) (down )?before .{0,80}(analysis|seen)|had (already )?been seen | for thresholds fixed before analysis: what had already been seen at that point
 
 # --- task-dependent: detection-style studies where an unmatched output is not proven wrong (uncomment if the guideline says so)
 # block  | forbid    | \bhallucinat\w*\b|\bfalse[- ]positives?\b|\bfalse[- ]positive rate\b | unmatched findings are "outside the reference set" until adjudicated
